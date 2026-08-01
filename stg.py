@@ -21,46 +21,43 @@ def hello():
 the__serial_tag_generator 
 ''')
     input(f'\nPress ENTER to continue... ')
-    cl()
-hello()
 def main():
-    cl()
     try:
+        hello()
         while True:
-            t=0
-            tag=''
-            try:
-                usr_nmb=int(input(f'Enter the NUMBER of the TAGs [1-9999]: '))
-                if usr_nmb<=0 or usr_nmb==9999:
+            cl()
+            while True:
+                t=0
+                tag=''
+                try:
+                    usr_nmb=int(input(f'Enter the NUMBER of the TAGs [1-9999]: '))
+                    if 0<usr_nmb<=9999:
+                        pass
+                    else:
+                        break
+                except Exception:
+                    break
+                print(cut)
+                while True:
+                    nma=r.choice(numbers)
+                    nmb=r.choice(numbers)
+                    vv=r.choice(verb)
+                    nn=r.choice(noun)
+                    tag=f'{t+1}. {vv}{nn}_{nma}{nmb}'
+                    print(tag)
+                    t+=1
+                    tag=''
+                    if t==usr_nmb:
+                        print(cut)
+                        break
+                usr_cnt=input(f'\n[A]gain / [Q]uit ? ').strip().lower()
+                if usr_cnt=='a':
+                    cl()
                     continue
                 else:
-                    pass
-            except ValueError:
-                continue
-            print(cut)
-            while True:
-                nma=r.choice(numbers)
-                nmb=r.choice(numbers)
-                vv=r.choice(verb)
-                nn=r.choice(noun)
-                tag=f'{t+1}. {vv}{nn}_{nma}{nmb}'
-                print(tag)
-                t+=1
-                tag=''
-                if t==usr_nmb:
-                    print(cut)
-                    break
-            usr_cnt=input(f'\n[A]gain / [Q]uit ? ').strip().lower()
-            if usr_cnt=='a':
-                cl()
-                continue
-            else:
-                cl()
-                sys.exit()
+                    cl()
+                    sys.exit()
     except KeyboardInterrupt:
         print(f'\nSTG has been stopped... ')
-        sys.exit()
-    except Exception as e:
-        print(f'\n[ERROR] -> {e} ')
         sys.exit()
 main()
